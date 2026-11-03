@@ -63,7 +63,7 @@ var fetchWeather = async (loc) => {
   const data = await res.json();
   return {
     at: Date.now(),
-    intervalMs: 30000,
+    intervalMs: 60000,
     location: loc,
     current: data.current || null,
     hourly: data.hourly || null,
@@ -77,7 +77,7 @@ var refresh = async () => {
   } catch (err) {
     latestSnapshot = {
       at: Date.now(),
-      intervalMs: 30000,
+      intervalMs: 60000,
       location,
       current: null,
       hourly: null,
@@ -89,7 +89,7 @@ var refresh = async () => {
 var schedule = () => {
   fetchTimer = setInterval(() => {
     refresh();
-  }, 30000);
+  }, 60000);
 };
 var json = (res, status, body) => {
   res.writeHead(status, { "Content-Type": "application/json", "Cache-Control": "no-store" });

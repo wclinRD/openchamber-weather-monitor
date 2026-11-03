@@ -291,10 +291,11 @@ ${Yo}`;var Mr=30000;var Te=(e)=>typeof e==="object"&&e!==null,Lr=(e)=>Te(e)&&(!(
   .location-name { font-size: 15px; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .location-meta { color: var(--oc-muted); font-size: 11px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .search { display: flex; gap: 6px; margin-top: 8px; }
-  .search input { flex: 1; padding: 0 8px; border: 1px solid var(--oc-border); border-radius: 6px; font: 12px var(--oc-font); background: var(--oc-background); color: var(--oc-fg); }
+  .search input { flex: 1; padding: 0 8px; border: 1px solid var(--oc-border); border-radius: 6px; font: 12px var(--oc-font); background: var(--oc-background); color: var(--oc-fg); font-weight: 500; }
+  .search input::placeholder { color: color-mix(in srgb, var(--oc-fg) 65%, var(--oc-background)); }
   .search input:focus { outline: 2px solid var(--oc-primary); outline-offset: -1px; }
-  .search button { padding: 0 12px; border-radius: 6px; border: 1px solid var(--oc-primary); background: var(--oc-primary); color: var(--oc-primary-text, var(--oc-primary)); cursor: pointer; }
-  .search button:hover, .search button:focus-visible { background: color-mix(in srgb, var(--oc-primary) 90%, var(--oc-bg)); }
+  .search button { padding: 0 12px; border-radius: 6px; border: 1px solid var(--oc-primary); background: color-mix(in srgb, var(--oc-primary) 22%, var(--oc-background)); color: var(--oc-primary); cursor: pointer; }
+  .search button:hover, .search button:focus-visible { background: color-mix(in srgb, var(--oc-primary) 32%, var(--oc-background)); }
   .card { min-width: 0; display: flex; flex-direction: column; gap: 8px; padding: 12px;
     border-radius: var(--oc-radius); background: color-mix(in srgb, var(--oc-fg) 4%, transparent); }
   .card-top { display: flex; align-items: baseline; gap: 8px; }
