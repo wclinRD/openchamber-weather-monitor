@@ -1,0 +1,41 @@
+{
+  "name": "openchamber-weather-monitor",
+  "version": "1.0.0",
+  "description": "Real-time weather data from Open-Meteo displayed in OpenChamber's panel and status bar",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "openchamber": {
+    "apiVersion": 1,
+    "engines": {
+      "openchamber": ">=2.3.3"
+    },
+    "contributes": {
+      "panel": {
+        "id": "weather-monitor",
+        "name": "Weather Monitor",
+        "icon": "cloud-sun",
+        "entry": "panel/index.html"
+      },
+      "statusSection": {
+        "entry": "status/index.html",
+        "title": "Weather",
+        "height": 32
+      },
+      "service": {
+        "entry": "service/main.js",
+        "runtime": "host"
+      }
+    }
+  },
+  "scripts": {
+    "build": "bun run scripts/build.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "bun test tests"
+  },
+  "devDependencies": {
+    "@openchamber/sdk": "^2.3.3",
+    "@types/bun": "^1.4.2",
+    "typescript": "^5.9.2"
+  }
+}
