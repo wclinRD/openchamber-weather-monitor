@@ -1,6 +1,6 @@
 // src/service/main.ts
 import http from "node:http";
-import { readFile, writeFile } from "node:fs/promises";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 var port = Number(process.env.OPENCHAMBER_SERVICE_PORT);
 var token = process.env.OPENCHAMBER_SERVICE_TOKEN ?? "";
@@ -8,7 +8,8 @@ if (!port || !token) {
   console.error("OPENCHAMBER_SERVICE_PORT and OPENCHAMBER_SERVICE_TOKEN are required");
   process.exit(1);
 }
-var LOCATION_FILE = join(process.env.HOME ?? "/tmp", ".openchamber/weather-location.json");
+var LOCATION_DIR = join(process.env.HOME ?? "/tmp", ".openchamber/extensions/weather-monitor");
+var LOCATION_FILE = join(LOCATION_DIR, "weather-location.json");
 var defaultLocation = { lat: 25.033, lon: 121.565, name: "Taipei", timezone: "Asia/Taipei" };
 var latestSnapshot = null;
 var location = defaultLocation;
@@ -25,6 +26,7 @@ var ensureLocation = async () => {
 };
 var saveLocation = async (loc) => {
   try {
+    await mkdir(LOCATION_DIR, { recursive: true });
     await writeFile(LOCATION_FILE, JSON.stringify(loc, null, 2));
   } catch {}
 };
