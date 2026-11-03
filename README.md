@@ -66,6 +66,14 @@ bun run build
 - Geocoding: `https://geocoding-api.open-meteo.com/v1/search?name={query}&language=zh`
 - Weather Forecast: `https://api.open-meteo.com/v1/forecast`
 
+## Data Source & Attribution
+
+This plugin uses [Open-Meteo](https://open-meteo.com/) for weather data.
+
+- Free tier: non-commercial use up to 10,000 calls/day, 5,000/hour, 600/minute, 300,000/month.
+- Data license: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Please credit Open-Meteo when displaying their data.
+- For commercial use or higher volumes, see [Open-Meteo pricing](https://open-meteo.com/en/pricing).
+
 ## License
 
 MIT

@@ -77,7 +77,7 @@ const fetchWeather = async (loc: LocationInfo): Promise<WeatherSnapshot> => {
   const data = await res.json() as WeatherForecastResponse;
   return {
     at: Date.now(),
-    intervalMs: 30_000,
+    intervalMs: 60_000,
     location: loc,
     current: data.current || null,
     hourly: data.hourly || null,
@@ -92,7 +92,7 @@ const refresh = async (): Promise<void> => {
   } catch (err: unknown) {
     latestSnapshot = {
       at: Date.now(),
-      intervalMs: 30_000,
+      intervalMs: 60_000,
       location,
       current: null,
       hourly: null,
@@ -103,7 +103,7 @@ const refresh = async (): Promise<void> => {
 };
 
 const schedule = (): void => {
-  fetchTimer = setInterval(() => { void refresh(); }, 30_000);
+  fetchTimer = setInterval(() => { void refresh(); }, 60_000);
 };
 
 const json = (res: http.ServerResponse, status: number, body: unknown): void => {
