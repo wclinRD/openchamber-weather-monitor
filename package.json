@@ -14,7 +14,7 @@
       "panel": {
         "id": "weather-monitor",
         "name": "Weather Monitor",
-        "icon": "cloud-sun",
+        "icon": "weather-icon.svg",
         "entry": "panel/index.html"
       },
       "statusSection": {
