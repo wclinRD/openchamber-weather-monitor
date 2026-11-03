@@ -3,7 +3,7 @@
 // `/location` accepts a location name and updates the next snapshot location.
 
 import http from 'node:http';
-import { readFile, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 
 import type { LocationInfo, LocationSearchResponse, WeatherForecastResponse, WeatherSnapshot } from '../shared/types.ts';
@@ -37,6 +37,7 @@ const ensureLocation = async (): Promise<void> => {
 
 const saveLocation = async (loc: LocationInfo): Promise<void> => {
   try {
+    await mkdir(join(process.env.HOME ?? '/tmp', '.openchamber'), { recursive: true });
     await writeFile(LOCATION_FILE, JSON.stringify(loc, null, 2));
   } catch {
     // Ignore write error; keep in memory.
