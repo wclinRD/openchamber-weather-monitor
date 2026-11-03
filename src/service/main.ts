@@ -15,7 +15,8 @@ if (!port || !token) {
   process.exit(1);
 }
 
-const LOCATION_FILE = join(process.env.HOME ?? '/tmp', '.openchamber/weather-location.json');
+const LOCATION_DIR = join(process.env.HOME ?? '/tmp', '.openchamber/extensions/weather-monitor');
+const LOCATION_FILE = join(LOCATION_DIR, 'weather-location.json');
 const defaultLocation = { lat: 25.033, lon: 121.565, name: 'Taipei', timezone: 'Asia/Taipei' } as LocationInfo;
 
 let latestSnapshot: WeatherSnapshot | null = null;
@@ -37,7 +38,7 @@ const ensureLocation = async (): Promise<void> => {
 
 const saveLocation = async (loc: LocationInfo): Promise<void> => {
   try {
-    await mkdir(join(process.env.HOME ?? '/tmp', '.openchamber'), { recursive: true });
+    await mkdir(LOCATION_DIR, { recursive: true });
     await writeFile(LOCATION_FILE, JSON.stringify(loc, null, 2));
   } catch {
     // Ignore write error; keep in memory.
